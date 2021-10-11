@@ -17,30 +17,6 @@ function shallowCopy(target) {
   return result;
 }
 
-// function deepClone(target, memorized = new WeakSet()) {
-//   if (target === null) return target;
-//   if (typeof target !== "object") return target;
-
-//   let result;
-//   if (Array.isArray(target)) {
-//     result = target.map((value) => deepClone(value));
-//   }
-
-//   if (Object.prototype.toString.call(target) === "[object Object]") {
-
-//     result = {};
-//     Object.entries(target).forEach(([key, value]) => {
-//       result[key] = memorized.has(value) ? memorized.get(value): deepClone(value,memorized);
-//     });
-
-//     if(memorized.has(result)) {
-//       memorized.add(result)
-//     }
-//   }
-
-//   return result;
-// }
-
 function deepClone(target, memo = new WeakMap()) {
   // primitive type
   if (!target instanceof Object) return target;

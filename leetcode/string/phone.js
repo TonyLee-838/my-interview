@@ -1,4 +1,6 @@
 function letterCombinations(digits) {
+  if (!digits) return [];
+
   const results = [];
   const lookup = {
     2: ["a", "b", "c"],
@@ -44,3 +46,6 @@ function letterCombinations(digits) {
 
   return results;
 }
+
+r = letterCombinations("325");
+r;
