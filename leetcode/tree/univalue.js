@@ -10,7 +10,7 @@ function isUnivalued(root) {
       number = node.val;
     }
 
-    if (number !== node) return false;
+    if (number !== node.val) return false;
 
     if (node.left) stack.push(node.left);
     if (node.right) stack.push(node.right);

@@ -3,17 +3,17 @@ function isCompleteTree(root) {
 
   const queue = [root];
 
-  let seenTheEnd = false;
+  let hasSeenTheEnd = false;
 
   while (queue.length) {
     const node = queue.pop();
 
     if (!node) {
-      seenTheEnd = true;
+      hasSeenTheEnd = true;
 
       //Normal node, it shouldn't have seen the end
     } else {
-      if (seenTheEnd) return false;
+      if (hasSeenTheEnd) return false;
 
       queue.unshift(node.left);
       queue.unshift(node.right);

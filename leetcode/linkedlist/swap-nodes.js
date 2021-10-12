@@ -6,7 +6,8 @@ var swapPairs = function (head) {
   dummy.next = head;
 
   let currentNode = dummy;
-
+//1 -> 2 -> 3 -> 4
+//c    f    s
   while (currentNode.next && currentNode.next.next) {
     const firstNode = currentNode.next;
     const secondNode = currentNode.next.next;

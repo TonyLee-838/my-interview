@@ -11,7 +11,10 @@ const list = new LinkedList([1, 2, 3, 4, 5, 6]);
 // 1 => null
 //
 function reverseLinkedList(head) {
-  let previous = null;
+  const dummy = new Node();
+  dummy.next = head;
+
+  let previous = dummy;
   let current = head;
 
   while (current) {
@@ -23,7 +26,7 @@ function reverseLinkedList(head) {
     current = next;
   }
 
-  return previous;
+  return dummy.next;
 }
 const result = reverseLinkedList(list.head);
 console.log(result);

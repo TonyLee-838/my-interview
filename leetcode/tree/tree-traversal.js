@@ -28,11 +28,12 @@ function inOrderTraverse(root) {
 
   const stack = [];
   const result = [];
+  const seen = new Set();
 
   let currentNode = root;
 
   while (currentNode || stack.length) {
-    while (currentNode) {
+    while (currentNode && !seen.has(currentNode)) {
       stack.push(currentNode);
       currentNode = currentNode.left;
     }
@@ -40,6 +41,7 @@ function inOrderTraverse(root) {
     const parentNode = stack.pop();
 
     result.push(parentNode.value);
+    seen.add(parentNode);
 
     currentNode = parentNode.right;
   }
