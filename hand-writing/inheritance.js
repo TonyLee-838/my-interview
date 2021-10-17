@@ -31,3 +31,13 @@ const child = new Child();
 Object.setPrototypeOf(child, new Parent());
 
 // 属性存在原型上 也存在本身对象上
+
+// {}.__proto__ === Parent.prototype
+const emptyObject = Object.create(Parent.prototype)
+//                _________ 
+//               |         |
+// {constructor: f } === Parent.prototype
+emptyObject.constructor = Child;
+Child.prototype = emptyObject
+
+// Child.prototype => {constructor: Child} =( __proto__ )=> Parent.prototype

@@ -56,7 +56,7 @@ function deepClone(target, memo = new WeakMap()) {
     });
   }
 
-  //Normal objects
+  //Plain objects
   if (Object.prototype.toString.call(target) === "[object Object]") {
     for (const key in target) {
       if (target.hasOwnProperty(key)) {
