@@ -48,8 +48,8 @@ function addBigInt(numberA, numberB) {
 
   return sum.join("") || "0";
 }
-const int1 = "10000000000000000000000000001";
-const int2 = "121231243121231243121231243";
+const int1 = "10000000000000000000000000000001";
+const int2 = "11111121211111111";
 
 r = addBigInt(int1, int2);
 r;

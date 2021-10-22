@@ -1,41 +1,36 @@
 function parse(csv) {
-  const splitted = csv.split("\n").slice(2,-1).map(data => data.split(","));
-  const  map = splitted.map(([name,age]) => createNewObject(name,age)).reduce((map,obj)=> {
-    map.set(obj.name,obj)
+  const splitted = csv
+    .split("\n")
+    .slice(2, -1)
+    .map((data) => data.split(","));
 
-    return map
-  },new Map())
+  const map = splitted
+    .map(([name, age]) => createNewObject(name, age))
+    .reduce((map, obj) => {
+      map.set(obj.name, obj);
 
+      return map;
+    }, new WeakMap());
 
+  let root;
 
-  splitted.forEach(([name,,parent]) => {
-    
-    if(!parent) return;
-    const parentObj = map.get(parent)
-    const currentObj = map.get(name)
+  splitted.forEach(([name, , parent]) => {
+    if (!parent) {
+      root = person;
+      return;
+    }
+    const parentObj = map.get(parent);
+    const currentObj = map.get(name);
 
-    parentObj.children.push(map.get(name))
-    currentObj.parent = parentObj
-    
-  })
+    parentObj.children.push(currentObj);
+    currentObj.parent = parentObj;
+  });
 
-  map
+  return root;
 
-  let result;
-  
-  map.forEach(person => {
-    if(!person.parent) result = person
-
-    delete person.parent
-  })
-
-  return result
-
-    
-  function createNewObject(name, age,) {
-    return { name, age, children: [],parent:null };
+  function createNewObject(name, age) {
+    return { name, age, children: [], parent: null };
   }
-
 }
 
 const csv = `
@@ -46,4 +41,4 @@ Anna,10,Bob
 `;
 
 r = parse(csv);
-console.log(JSON.stringify(r,null,2));
+console.log(JSON.stringify(r, null, 2));

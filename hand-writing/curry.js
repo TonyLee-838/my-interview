@@ -26,3 +26,15 @@ function sum(...args1) {
     return _fn;
   };
 }
+
+
+function make(fn){
+  return function(...args1){
+    const nextFunction = function(...args2){
+      fn.call(this,...args1,...args2)
+    }
+
+
+    return nextFunction
+  }
+}

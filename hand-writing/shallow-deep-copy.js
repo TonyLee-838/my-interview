@@ -40,19 +40,19 @@ function deepClone(target, memo = new WeakMap()) {
   //Set Map
   if (target instanceof Set) {
     target.forEach((item) => {
-      clonedResult.add(deepClone(item));
+      clonedResult.add(deepClone(item, memo));
     });
   }
   if (target instanceof Map) {
     target.forEach((value, key) => {
-      clonedResult.add(deepClone(key), deepClone(value));
+      clonedResult.add(deepClone(key, memo), deepClone(value, memo));
     });
   }
   //Arrays
 
   if (target instanceof Array) {
     target.forEach((value) => {
-      clonedResult.push(deepClone(value));
+      clonedResult.push(deepClone(value, memo));
     });
   }
 
@@ -60,10 +60,12 @@ function deepClone(target, memo = new WeakMap()) {
   if (Object.prototype.toString.call(target) === "[object Object]") {
     for (const key in target) {
       if (target.hasOwnProperty(key)) {
-        clonedResult[key] = deepClone(target[key]);
+        clonedResult[key] = deepClone(target[key], memo);
       }
     }
   }
+
+  return clonedResult;
 }
 
 const parent = { ppp: 1 };

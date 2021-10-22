@@ -48,7 +48,7 @@ Array.prototype.myFilter = function (executeFn, thisArg = this) {
   const originalArray = this;
   const length = originalArray.length;
 
-  const resultArray = new Array();
+  const resultArray = [];
 
   for (let k = 0; k < length; k++) {
     const element = originalArray[k];

@@ -3,18 +3,20 @@ function find(string) {
 
   let leftPointer = 0;
   let rightPointer = 1;
+  let result = "";
 
   while (rightPointer < string.length) {
     const subString = string.slice(leftPointer, rightPointer + 1);
     if (areAllUnique(subString)) {
       rightPointer++;
+      result = subString;
     } else {
       rightPointer++;
       leftPointer++;
     }
   }
 
-  return rightPointer - leftPointer;
+  return result;
 }
 
 function areAllUnique(string) {
@@ -23,7 +25,7 @@ function areAllUnique(string) {
   return set.size === string.length;
 }
 
-const string = "";
+const string = "1234ddawfcbo";
 
 r = find(string);
 r;
